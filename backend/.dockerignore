@@ -1,0 +1,55 @@
+# Git
+.git
+.gitignore
+.github
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Build artifacts
+bin/
+tmp/
+*.exe
+*.test
+*.out
+
+# Documentation
+*.md
+!CLAUDE.md
+
+# Test files
+*_test.go
+testdata/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# CI/CD
+.github/
+
+# Go
+vendor/
+
+# Misc
+*.bak
+*.tmp
+coverage.txt
+coverage.out

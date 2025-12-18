@@ -1,0 +1,21 @@
+{
+  "name": "SearchAV",
+  "short_name": "SearchAV",
+  "description": "视频搜索与播放",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0f1622",
+  "background_color": "#0f1622",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+@import 'tailwindcss';
+@import '@skeletonlabs/skeleton';
+@import '@skeletonlabs/skeleton/themes/cerberus';
+
+@theme {
+  --color-cyber-blue: #00ccff;
+  --color-cyber-pink: #ff3c78;
+  --color-cyber-bg: #0f1622;
+  --color-cyber-surface: #111111;
+  --color-cyber-surface-100: #191919;
+  --color-cyber-border: #333333;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  @apply bg-cyber-bg text-white min-h-screen;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--color-cyber-blue), var(--color-cyber-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-hover {
+  @apply transition-all duration-300;
+}
+
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cyber-surface;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-cyber-border;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}

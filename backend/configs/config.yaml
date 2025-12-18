@@ -1,0 +1,17 @@
+server:
+  host: "0.0.0.0"
+  port: 9898
+
+log:
+  level: "info"
+  format: "console"
+
+auth:
+  enabled: false
+  passwords: [ ]
+
+source:
+  timeout: 5s
+  retry: 1
+
+sources: [ ]

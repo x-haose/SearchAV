@@ -1,0 +1,151 @@
+basePath: /api
+definitions:
+  searchav_internal_dto.DetailResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      data:
+        $ref: '#/definitions/searchav_internal_model.VideoDetail'
+      msg:
+        example: success
+        type: string
+    type: object
+  searchav_internal_dto.ErrorResponse:
+    properties:
+      code:
+        example: 400
+        type: integer
+      msg:
+        example: bad request
+        type: string
+    type: object
+  searchav_internal_dto.SearchResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      list:
+        items:
+          $ref: '#/definitions/searchav_internal_model.VideoItem'
+        type: array
+      msg:
+        example: success
+        type: string
+    type: object
+  searchav_internal_model.SourceInfo:
+    properties:
+      source_code:
+        type: string
+      source_name:
+        type: string
+      vod_id:
+        type: integer
+    type: object
+  searchav_internal_model.VideoDetail:
+    properties:
+      episodes:
+        items:
+          type: string
+        type: array
+      vod_actor:
+        type: string
+      vod_area:
+        type: string
+      vod_content:
+        type: string
+      vod_director:
+        type: string
+      vod_name:
+        type: string
+      vod_pic:
+        type: string
+      vod_year:
+        type: string
+    type: object
+  searchav_internal_model.VideoItem:
+    properties:
+      sources:
+        items:
+          $ref: '#/definitions/searchav_internal_model.SourceInfo'
+        type: array
+      type_name:
+        type: string
+      vod_name:
+        type: string
+      vod_pic:
+        type: string
+      vod_remarks:
+        type: string
+    type: object
+host: localhost:9898
+info:
+  contact: {}
+  description: Video aggregation search service
+  title: SearchAV API
+  version: "1.0"
+paths:
+  /detail:
+    get:
+      consumes:
+      - application/json
+      description: Get video details and play URLs from a specific source
+      parameters:
+      - description: Source code
+        in: query
+        name: source
+        required: true
+        type: string
+      - description: Video ID
+        in: query
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/searchav_internal_dto.DetailResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/searchav_internal_dto.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/searchav_internal_dto.ErrorResponse'
+      summary: Get video detail
+      tags:
+      - detail
+  /search:
+    get:
+      consumes:
+      - application/json
+      description: Aggregate search across multiple video sources
+      parameters:
+      - description: Search keyword
+        in: query
+        name: q
+        required: true
+        type: string
+      - description: Include adult sources (1=yes, 0=no, default=0)
+        in: query
+        name: adult
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/searchav_internal_dto.SearchResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/searchav_internal_dto.ErrorResponse'
+      summary: Search videos
+      tags:
+      - search
+swagger: "2.0"
