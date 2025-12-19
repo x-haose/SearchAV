@@ -109,6 +109,13 @@ func RegisterRoutes(
 
 // StartServer starts the HTTP server
 func StartServer(lc fx.Lifecycle, app *fiber.App, cfg *config.Config, logger *zerolog.Logger) {
+	// Log config on startup
+	logger.Info().
+		Bool("auth_enabled", cfg.Auth.Enabled).
+		Int("passwords_count", len(cfg.Auth.Passwords)).
+		Int("sources_count", len(cfg.Sources)).
+		Msg("config loaded")
+
 	lc.Append(fx.Hook{
 		OnStart: func(ctx context.Context) error {
 			addr := fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port)
