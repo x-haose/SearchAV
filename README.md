@@ -18,6 +18,12 @@ A modern video search aggregation service built with Go backend and SvelteKit fr
 - **Responsive Design** - Works on desktop and mobile devices
 - **Source Switching** - Switch between different video sources for the same content
 
+## Demo
+
+**Live Demo:** https://sav.haose.love/
+
+**Password:** `admin`
+
 ## Screenshots
 
 |               Home                |           Search Results            |
