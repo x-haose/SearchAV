@@ -101,35 +101,17 @@
 
 <PasswordModal open={showPasswordModal} onsubmit={handlePasswordSubmit} />
 
-<!-- Top right controls (fixed position across all pages) -->
-<div class="fixed top-4 right-4 z-20 flex items-center gap-2">
-	{#if showLogout}
-		<AdultToggle />
-		<button
-			type="button"
-			onclick={handleLogout}
-			class="p-2 rounded-lg bg-gray-800/80 hover:bg-gray-700 transition-colors"
-			title={m.logout()}
-		>
-			<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-			</svg>
-		</button>
-	{/if}
-	<LanguageSwitcher />
-</div>
-
 <div class="min-h-screen flex flex-col">
 	<!-- Top bar -->
 	<div class="sticky top-0 z-10 bg-cyber-bg/95 backdrop-blur border-b border-gray-800">
-		<div class="container mx-auto px-4 py-3 flex items-center gap-4 pr-28">
+		<div class="container mx-auto px-4 py-2 flex items-center gap-3">
 			<!-- Home button -->
 			<button
 				type="button"
 				onclick={goHome}
 				class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors shrink-0"
 			>
-				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path
 						stroke-linecap="round"
 						stroke-linejoin="round"
@@ -137,12 +119,30 @@
 						d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
 					></path>
 				</svg>
-				<span class="text-lg font-bold gradient-text hidden sm:inline">{m.app_name()}</span>
+				<span class="text-base font-bold gradient-text hidden md:inline">{m.app_name()}</span>
 			</button>
 
 			<!-- Search bar -->
-			<div class="flex-1 max-w-2xl">
+			<div class="flex-1 min-w-0">
 				<SearchBar bind:value={currentQuery} loading={searching} onsubmit={handleSearch} compact />
+			</div>
+
+			<!-- Controls -->
+			<div class="flex items-center gap-1.5 shrink-0">
+				{#if showLogout}
+					<AdultToggle />
+					<button
+						type="button"
+						onclick={handleLogout}
+						class="p-1.5 rounded-lg hover:bg-gray-700 transition-colors text-gray-400 hover:text-white"
+						title={m.logout()}
+					>
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+						</svg>
+					</button>
+				{/if}
+				<LanguageSwitcher />
 			</div>
 		</div>
 	</div>
